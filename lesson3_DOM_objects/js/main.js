@@ -1,4 +1,4 @@
-{ /*
+{
     // - создать 5 объектов. В каждом объекте не менее 3х полей. Все объекты разные по набору полей. (Т.е поле name  должно присутствовать только 1 раз в одном объекте )
     let user1 = {
         name: 'Vasya',
@@ -491,7 +491,7 @@
     }
 
     table4.append(tbody4);
-    document.body.prepend(table4);
+    // document.body.prepend(table4);
     //------------------------------------------------------------
     // --Завантажити з мережі будь-який шаблон сайту. Підключити до нього свій скріпт-файл. У файлі прописати наступні доступи та дії
     // - знайти всі елементі, які мають id
@@ -501,7 +501,7 @@
     let ps = document.querySelectorAll('p');
 
     for (const p of ps) {
-        // p.textContent = 'hello oktenweb!';
+        //p.textContent = 'hello oktenweb!';
     }
     //------------------------------------------------------------
     // - знайти всі div та змінити ім колір на червоний
@@ -511,7 +511,7 @@
         // div.style.color = 'red';
         // div.style.backgroundColor = 'red';
     }
-*/
+
     //------------------------------------------------------------
     // ============
     // ====class===
@@ -540,10 +540,10 @@
 
     content.append(ul);
 
-    let saveContent = content;
-    content.remove();
-    document.body.innerHTML = ''; // удалить все
-    // document.body.append(saveContent); // добавить на стр только 1
+    // let saveContent = content;
+    // content.remove();
+    // document.body.innerHTML = ''; // удалить все
+    // document.body.append(saveContent); // добавить на стр только content
     //------------------------------------------------------
     // -Є масив котрий характеризує правила. Створити скрипт який ітерує цей масив, та робить з кожне правило в окремому блоці.
     // При цому в блоці, номер правила записати в свій блок, текст правила записати в свій окремий блок.
@@ -604,13 +604,128 @@
     document.body.append(container);
 
     //-----------------------------------------------------------------------------
-    //
-    //
-    //
+
     // *** за допомогою fetch (як в прикладі) отримати від jsonplaceholder всі users. За допомогою document.createElement вивести їх в браузер. Помістити кожен окремий об'єкт в блок, при цьому кожен внутрішній об'єкт в свій блок (блок в блоці).
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(val => val.json())
+        .then(val => {
+            for (const user of val) {
+                let ul = document.createElement('ul');
+
+                for (let key in user) {
+                    if (user[key].constructor.name === 'Object') {
+                        let li = document.createElement('li');
+                        li.textContent = `${key}:`;
+                        let ul2 = document.createElement('ul');
+
+                        for (let key2 in user[key]) {
+                            let li2 = document.createElement('li');
+                            li2.textContent = `${key2}: ${user[key][key2]}`;
+                            ul2.append(li2);
+                        }
+                        li.append(ul2);
+                        ul.append(li);
+                    }
+                    else {
+                        let li = document.createElement('li');
+                        li.textContent = `${key}: ${user[key]}`;
+                        ul.append(li);
+                    }
+                }
+                document.body.append(ul);
+                document.write('<hr>');
+            }
+
+        }).catch(err => alert(err));
+    document.write('<hr>')
+    //----------------------------------------------------------------------
     // *** за допомогою fetch (як в прикладі) отримати від jsonplaceholder всі posts. За допомогою document.createElement вивести їх в браузер. Помістити кожен окремий об'єкт в блок, при цьому кожен внутрішній об'єкт(якщо він існує) в свій блок (блок в блоці).
+    fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(val => val.json())
+        .then(val => {
+            for (const post of val) {
+                let ul = document.createElement('ul');
+
+                for (let key in post) {
+                    let li = document.createElement('li');
+                    li.textContent = `${key}: ${post[key]}`;
+                    ul.append(li);
+                }
+                document.body.append(ul);
+                document.write('<hr>');
+            }
+        }).catch(err => alert(err));
+    document.write('<hr>');
+    //---------------------------------------------------------
     // *** за допомогою fetch (як в прикладі) отримати від jsonplaceholder всі comments. За допомогою document.createElement вивести їх в браузер. Помістити кожен окремий об'єкт в блок, при цьому кожен внутрішній об'єкт(якщо він існує) в свій блок (блок в блоці).
+    fetch('https://jsonplaceholder.typicode.com/comments')
+        .then(val => val.json())
+        .then(val => {
+            for (const comment of val) {
+                let ul = document.createElement('ul');
+
+                for (let key in comment) {
+                    let li = document.createElement('li');
+                    li.textContent = `${key}: ${comment[key]}`;
+                    ul.append(li);
+                }
+                document.body.append(ul);
+                document.write('<hr>');
+            }
+        }).catch(err => alert(err));
+    document.write('<hr>');
+    //-------------------------------------------------------------------------
     // ****** при помощи fetch (как в примере) получить от jsonplaceholder все posts. Внутри последнего then() сделать еще один fetch который сделает запрос и получит все comments. Объеденить соответсвующий post с соответсвующими comment и вывести в браузер. Подсказка : в каждом comment есть поле postId которое определяет какой комментарий принадлежит какому посту
+    fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(val => val.json())
+        .then(val => {
+            let posts = val;
+
+            fetch('https://jsonplaceholder.typicode.com/comments')
+                .then(val => val.json())
+                .then(val => {
+                    let comments = val;
+
+                    for (const post of posts) {
+                        for (comment of comments) {
+                            if (post.userId === comment.postId) {
+                                post.comments = comment;
+                            }
+                        }
+                    }
+
+                    //--------------------------------
+                    for (const post of posts) {
+                        let ul = document.createElement('ul');
+
+                        for (let key in post) {
+                            if (post[key].constructor.name === 'Object') {
+                                let li = document.createElement('li');
+                                li.textContent = `${key}:`;
+                                let ul2 = document.createElement('ul');
+
+                                for (let key2 in post[key]) {
+                                    let li2 = document.createElement('li');
+                                    li2.textContent = `${key2}: ${post[key][key2]}`;
+                                    ul2.append(li2);
+                                }
+                                li.append(ul2);
+                                ul.append(li);
+                            }
+                            else {
+                                let li = document.createElement('li');
+                                li.textContent = `${key}: ${post[key]}`;
+                                ul.append(li);
+                            }
+                        }
+                        document.body.append(ul);
+                        document.write('<hr>');
+                    }
+                }).catch(err => alert(err));
+
+        }).catch(err => alert(err));
+    document.write('<hr>');
+
     //===============================================
     //===============================================
 
