@@ -135,10 +135,9 @@
     //--------------------------------------------------
     // - *** приймає масив та число "i", та міняє місцями об`єкт який знаходиться в індексі "i" на "i+1"
     function replacePlace(arr, i) {
-        let n = arr.splice(i,1);
-        arr.splice(i+1,0, n[0]);
+        const removed = arr.splice(i,1);
+        arr.splice(i+1,0, removed[0]);
         return arr;
-
     }
     console.log(replacePlace([0,0,0,87,1,0,0,0], 3)); // [0,0,0,1,87,0,0,0]
 
