@@ -406,7 +406,14 @@
         }
     }
 
+    console.log(usersWithCities);
+    //#2
+    // usersWithId.forEach(user => user.adress = citiesWithId.find(city => city.user_id === user.id));
+    // let usersWithCities = [];
+    // usersWithId.forEach(user => usersWithCities.push(user);
+    //
     // console.log(usersWithCities);
+
     //-----------------------------------------------------------
     //DOM
 
