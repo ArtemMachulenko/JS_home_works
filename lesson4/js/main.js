@@ -1,4 +1,5 @@
 {
+    
     // - створити функцію яка виводить масив
     function showArr(arr) {
         console.log(arr);
@@ -18,8 +19,16 @@
     consoleLine();
     //--------------------------------------------------
     // - створити функцію яка приймає три числа та виводить та повертає найменьше.
+
     function getMin(a,b,c) {
-        return Math.min(a,b,c);
+
+        switch(true) {
+            case a < b && a < c: return a;
+            case b < a && b < c: return b;
+            default: return c;
+        }
+
+        //return Math.min(a,b,c);
     }
 
     console.log(getMin(1,2,3)); //1
