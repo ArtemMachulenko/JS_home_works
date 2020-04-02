@@ -1,5 +1,4 @@
 {
-    
     // - створити функцію яка виводить масив
     function showArr(arr) {
         console.log(arr);
@@ -21,13 +20,11 @@
     // - створити функцію яка приймає три числа та виводить та повертає найменьше.
 
     function getMin(a,b,c) {
-
         switch(true) {
             case a < b && a < c: return a;
             case b < a && b < c: return b;
             default: return c;
         }
-
         //return Math.min(a,b,c);
     }
 
@@ -37,7 +34,12 @@
     //--------------------------------------------------
     // - створити функцію яка приймає три числа та виводить та повертає найбільше.
     function getMax(a,b,c) {
-        return Math.max(a,b,c);
+        switch(true) {
+            case a > b && a > c: return a;
+            case b > a && b > c: return b;
+            default: return c;
+        }
+        // return Math.max(a,b,c);
     }
 
     console.log(getMax(1,2,3)); //3
