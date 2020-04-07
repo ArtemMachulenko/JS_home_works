@@ -366,7 +366,7 @@
             }
 
             increaseMaxSpeed(newSpeed) {
-                this.maxSpeed = newSpeed;
+                this.maxSpeed += newSpeed;
             }
 
             changeYear(newValue) {
