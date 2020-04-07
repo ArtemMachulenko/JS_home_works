@@ -387,32 +387,39 @@
     // ==============================================
     {
         class Cinderella {
-            constructor(...args) {
-                [this.name, this.age, this.footSize] = args;
+            constructor(name, age, footSize) {
+                this.name = name;
+                this.age = age; 
+                this.footSize = footSize;
             }
         }
 
-        const cinderells = [];
-
-        for (let i = 0; i < 10; i++) {
-            const START_FOOT_SIZE = 35;
-            const START_AGE = 16;
-            cinderells.push(new Cinderella(`Cinderella${i + 1}`, START_AGE + i, START_FOOT_SIZE + i));
-        }
-
-        //console.log(cinderells);
+        const cinderells = [
+            new Cinderella('Cinderella1', 16, 32),
+            new Cinderella('Cinderella2', 17, 33),
+            new Cinderella('Cinderella3', 18, 34),
+            new Cinderella('Cinderella4', 19, 35),
+            new Cinderella('Cinderella5', 20, 36),
+            new Cinderella('Cinderella6', 21, 37),
+            new Cinderella('Cinderella7', 22, 38),
+            new Cinderella('Cinderella8', 23, 39),
+            new Cinderella('Cinderella9', 24, 40),
+            new Cinderella('Cinderella10', 25, 41),
+        ];
 
         class Prince {
-            constructor(...args) {
-                [this.name, this.age, this.findedFootSize] = args;
+            constructor(name, age, findedFootSize) {
+                this.name = name; 
+                this.age = age;
+                this.findedFootSize = findedFootSize;
             }
         }
 
-        const prince = new Prince('Vasya', 16, 42);
+        const prince = new Prince('Vasya', 16, 33);
 
         for (const cinderell of cinderells) {
             if (prince.findedFootSize === cinderell.footSize) {
-                console.log(`Prince ${prince.name} found a shoe ${cinderell.name}.`); //Prince Vasya found a shoe Cinderella9.
+                console.log(`Prince ${prince.name} found a shoe ${cinderell.name}.`); //Prince Vasya found a shoe Cinderella2.
             }
         }
 
@@ -424,21 +431,32 @@
     // -- функція повинна приймати масив попелюшок, та шукає ту котра йому підходить
     // ==============================================
     {
-        function Cinderella(...args){
-            [this.name, this.age, this.footSize] = args;
+        function Cinderella(name, age, footSize){
+            this.name = name; 
+            this.age = age; 
+            this.footSize = footSize;
         }
 
-        const cinderells = [];
-
-        for (let i = 0; i < 10; i++) {
-            const START_FOOT_SIZE = 35;
-            const START_AGE = 16;
-            cinderells.push(new Cinderella(`Cinderella${i + 1}`, START_AGE + i, START_FOOT_SIZE + i));
-        }
+        const cinderells = [
+            new Cinderella('Cinderella1', 16, 32),
+            new Cinderella('Cinderella2', 17, 33),
+            new Cinderella('Cinderella3', 18, 34),
+            new Cinderella('Cinderella4', 19, 35),
+            new Cinderella('Cinderella5', 20, 36),
+            new Cinderella('Cinderella6', 21, 37),
+            new Cinderella('Cinderella7', 22, 38),
+            new Cinderella('Cinderella8', 23, 39),
+            new Cinderella('Cinderella9', 24, 40),
+            new Cinderella('Cinderella10', 25, 41),
+        ];
+        
 
         // console.log(cinderells);
-        function Prince(...args){
-            [this.name, this.age, this.findedFootSize] = args;
+        function Prince(name, age, findedFootSize) {
+            this.name = name;
+            this.age = age; 
+            this.findedFootSize = findedFootSize;
+
             this.findCinderella = function(cinderellsArr) {
                 for (const cinderell of cinderellsArr) {
                     if (this.findedFootSize === cinderell.footSize) {
@@ -448,8 +466,8 @@
             }
         }
 
-        const prince = new Prince('Petya', 16, 43);
-        prince.findCinderella(cinderells); //Prince Petya found a shoe Cinderella9.
+        const prince = new Prince('Petya', 17, 35);
+        prince.findCinderella(cinderells); //Prince Petya found a shoe Cinderella4.
 
     }
 }
