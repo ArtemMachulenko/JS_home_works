@@ -295,7 +295,7 @@
             console.log(this);
         },
         increaseMaxSpeed(newSpeed) {
-            this.maxSpeed = newSpeed;
+            this.maxSpeed += newSpeed;
         },
         changeYear(newValue) {
             this.year = newValue;
@@ -328,7 +328,7 @@
                 console.log(this);
             };
             this.increaseMaxSpeed = function (newSpeed) {
-                this.maxSpeed = newSpeed;
+                this.maxSpeed += newSpeed;
             };
             this.changeYear = function (newValue) {
                 this.year = newValue;
