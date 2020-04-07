@@ -51,6 +51,11 @@
         console.log(Math.max(...[...arguments])); //9
         return Math.min(...[...arguments]);
     }
+	
+	//function getMinAndShowMax(...arr) {
+    //    console.log(Math.max(...arr)); //9
+    //    return Math.min(...arr);
+    //}
 
     let minDigit = getMinAndShowMax(0,1,2,3,4,5,6,7,8,9); //0
 
@@ -149,6 +154,11 @@
         const removed = arr.splice(i,1);
         arr.splice(i+1,0, removed[0]);
         return arr;
+		/*
+		const temp = arr[i];
+		arr[i] = array[i+1];
+		arr[i+1] = temp;
+		*/
     }
     console.log(replacePlace([0,0,0,87,1,0,0,0], 3)); // [0,0,0,1,87,0,0,0]
 
@@ -165,6 +175,7 @@
         const arrWitoutZeros = arr.filter(n => n !== 0);
         const arrZeros = [...Array(arr.length - arrWitoutZeros.length)].fill(0);
         return [...arrWitoutZeros, ...arrZeros];
+		//arr.join('').split(0)......
     }
 
     console.log(zerosToEndArr([1,0,6,0,3])); //[1,6,3,0,0]
