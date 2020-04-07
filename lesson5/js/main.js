@@ -38,49 +38,49 @@
             this.attrs = attrs;
         }
 
-        const a = new DescribeTag('A','Тег <a> предназначен для создания ссылок.', [
+        const a = new DescribeTag('<a>','Тег <a> предназначен для создания ссылок.', [
             {titleOfAttr: 'accesskey', actionOfAttr: 'Активация ссылки с помощью комбинации клавиш.'},
             {titleOfAttr: 'href', actionOfAttr: 'Задает адрес документа, на который следует перейти.'},
             {titleOfAttr: 'title', actionOfAttr: 'Добавляет всплывающую подсказку к тексту ссылки.'}
         ]);
 
-        const div = new DescribeTag('DIV','Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого.', [
+        const div = new DescribeTag('<div>','Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого.', [
             {titleOfAttr: 'align', actionOfAttr: 'Задает выравнивание содержимого тега <div>.'},
             {titleOfAttr: 'title', actionOfAttr: 'Добавляет всплывающую подсказку к содержимому.'},
             {titleOfAttr: 'class', actionOfAttr: 'Задает стилевой класс, который позволяет связать тег со стилевым оформлением'}
         ]);
 
-        const h1 = new DescribeTag('H1', 'Тег <h1> представляет собой наиболее важный заголовок первого уровня',  [
+        const h1 = new DescribeTag('<h1>', 'Тег <h1> представляет собой наиболее важный заголовок первого уровня',  [
             {titleOfAttr: 'align', actionOfAttr: 'Задает выравнивание заголовка.'},
             {titleOfAttr: 'id', actionOfAttr: 'Задает стилевой идентификатор — уникальное имя элемента, которое используется для изменения его стиля.'},
             {titleOfAttr: 'lang', actionOfAttr: 'Браузер использует значение параметра для правильного отображения некоторых национальных символов.'}
         ]);
 
-        const span = new DescribeTag('SPAN', 'Тег <span> предназначен для определения строчных элементов документа',  [
+        const span = new DescribeTag('<span>', 'Тег <span> предназначен для определения строчных элементов документа',  [
             {titleOfAttr: 'contenteditable', actionOfAttr: 'Сообщает, что элемент доступен для редактирования пользователем.'},
             {titleOfAttr: 'spellcheck', actionOfAttr: 'Указывает браузеру проверять или нет правописание и грамматику в тексте.'},
             {titleOfAttr: 'dir', actionOfAttr: 'Задает направление и отображение текста — слева направо или справа налево.'}
         ]);
 
-        const input = new DescribeTag('INPUT', 'Тег <input> предназначен для создания текстовых полей, различных кнопок, переключателей и флажков', [
+        const input = new DescribeTag('<input>', 'Тег <input> предназначен для создания текстовых полей, различных кнопок, переключателей и флажков', [
             {titleOfAttr: 'type', actionOfAttr: 'Сообщает браузеру, к какому типу относится элемент формы.'},
             {titleOfAttr: 'value', actionOfAttr: 'Значение элемента.'},
             {titleOfAttr: 'autofocus', actionOfAttr: 'Устанавливает фокус в поле формы.'}
         ]);
 
-        const form = new DescribeTag('FORM', 'Тег <form> устанавливает форму на веб-странице,предназначенную для обмена данными между пользователем и сервером', [
+        const form = new DescribeTag('<form>', 'Тег <form> устанавливает форму на веб-странице,предназначенную для обмена данными между пользователем и сервером', [
             {titleOfAttr: 'action', actionOfAttr: 'Адрес программы или документа, который обрабатывает данные формы.'},
             {titleOfAttr: 'method', actionOfAttr: 'Метод протокола HTTP.'},
             {titleOfAttr: 'name', actionOfAttr: 'Имя формы.'}
         ]);
 
-        const option = new DescribeTag('OPTION', 'Тег <option> определяет отдельные пункты списка, создаваемого с помощью контейнера <select>.', [
+        const option = new DescribeTag('<option>', 'Тег <option> определяет отдельные пункты списка, создаваемого с помощью контейнера <select>.', [
             {titleOfAttr: 'selected', actionOfAttr: 'Заранее устанавливает определенный пункт списка выделенным.'},
             {titleOfAttr: 'disabled', actionOfAttr: 'Заблокировать для доступа элемент списка.'},
             {titleOfAttr: 'value', actionOfAttr: 'Значение пункта списка, которое будет отправлено на сервер или прочитано с помощью скриптов.'}
         ]);
 
-        const select = new DescribeTag('SELECT', 'Тег <select> позволяет создать элемент интерфейса в виде раскрывающегося списка.', [
+        const select = new DescribeTag('<select>', 'Тег <select> позволяет создать элемент интерфейса в виде раскрывающегося списка.', [
             {titleOfAttr: 'multiple', actionOfAttr: 'Позволяет одновременно выбирать сразу несколько элементов списка.'},
             {titleOfAttr: 'autofocus', actionOfAttr: 'Устанавливает, что список получает фокус после загрузки страницы.'},
             {titleOfAttr: 'name', actionOfAttr: 'Имя элемента для отправки на сервер или обращения через скрипты.'},
@@ -131,49 +131,49 @@
             }
         }
 
-        const a = new DescribeTag('A','Тег <a> предназначен для создания ссылок.', [
+        const a = new DescribeTag('<a>','Тег <a> предназначен для создания ссылок.', [
             {titleOfAttr: 'accesskey', actionOfAttr: 'Активация ссылки с помощью комбинации клавиш.'},
             {titleOfAttr: 'href', actionOfAttr: 'Задает адрес документа, на который следует перейти.'},
             {titleOfAttr: 'title', actionOfAttr: 'Добавляет всплывающую подсказку к тексту ссылки.'}
         ]);
 
-        const div = new DescribeTag('DIV','Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого.', [
+        const div = new DescribeTag('<div>','Элемент <div> является блочным элементом и предназначен для выделения фрагмента документа с целью изменения вида содержимого.', [
             {titleOfAttr: 'align', actionOfAttr: 'Задает выравнивание содержимого тега <div>.'},
             {titleOfAttr: 'title', actionOfAttr: 'Добавляет всплывающую подсказку к содержимому.'},
             {titleOfAttr: 'class', actionOfAttr: 'Задает стилевой класс, который позволяет связать тег со стилевым оформлением'}
         ]);
 
-        const h1 = new DescribeTag('H1', 'Тег <h1> представляет собой наиболее важный заголовок первого уровня',  [
+        const h1 = new DescribeTag('<h1>', 'Тег <h1> представляет собой наиболее важный заголовок первого уровня',  [
             {titleOfAttr: 'align', actionOfAttr: 'Задает выравнивание заголовка.'},
             {titleOfAttr: 'id', actionOfAttr: 'Задает стилевой идентификатор — уникальное имя элемента, которое используется для изменения его стиля.'},
             {titleOfAttr: 'lang', actionOfAttr: 'Браузер использует значение параметра для правильного отображения некоторых национальных символов.'}
         ]);
 
-        const span = new DescribeTag('SPAN', 'Тег <span> предназначен для определения строчных элементов документа',  [
+        const span = new DescribeTag('<span>', 'Тег <span> предназначен для определения строчных элементов документа',  [
             {titleOfAttr: 'contenteditable', actionOfAttr: 'Сообщает, что элемент доступен для редактирования пользователем.'},
             {titleOfAttr: 'spellcheck', actionOfAttr: 'Указывает браузеру проверять или нет правописание и грамматику в тексте.'},
             {titleOfAttr: 'dir', actionOfAttr: 'Задает направление и отображение текста — слева направо или справа налево.'}
         ]);
 
-        const input = new DescribeTag('INPUT', 'Тег <input> предназначен для создания текстовых полей, различных кнопок, переключателей и флажков', [
+        const input = new DescribeTag('<input>', 'Тег <input> предназначен для создания текстовых полей, различных кнопок, переключателей и флажков', [
             {titleOfAttr: 'type', actionOfAttr: 'Сообщает браузеру, к какому типу относится элемент формы.'},
             {titleOfAttr: 'value', actionOfAttr: 'Значение элемента.'},
             {titleOfAttr: 'autofocus', actionOfAttr: 'Устанавливает фокус в поле формы.'}
         ]);
 
-        const form = new DescribeTag('FORM', 'Тег <form> устанавливает форму на веб-странице,предназначенную для обмена данными между пользователем и сервером', [
+        const form = new DescribeTag('<form>', 'Тег <form> устанавливает форму на веб-странице,предназначенную для обмена данными между пользователем и сервером', [
             {titleOfAttr: 'action', actionOfAttr: 'Адрес программы или документа, который обрабатывает данные формы.'},
             {titleOfAttr: 'method', actionOfAttr: 'Метод протокола HTTP.'},
             {titleOfAttr: 'name', actionOfAttr: 'Имя формы.'}
         ]);
 
-        const option = new DescribeTag('OPTION', 'Тег <option> определяет отдельные пункты списка, создаваемого с помощью контейнера <select>.', [
+        const option = new DescribeTag('<option>', 'Тег <option> определяет отдельные пункты списка, создаваемого с помощью контейнера <select>.', [
             {titleOfAttr: 'selected', actionOfAttr: 'Заранее устанавливает определенный пункт списка выделенным.'},
             {titleOfAttr: 'disabled', actionOfAttr: 'Заблокировать для доступа элемент списка.'},
             {titleOfAttr: 'value', actionOfAttr: 'Значение пункта списка, которое будет отправлено на сервер или прочитано с помощью скриптов.'}
         ]);
 
-        const select = new DescribeTag('SELECT', 'Тег <select> позволяет создать элемент интерфейса в виде раскрывающегося списка.', [
+        const select = new DescribeTag('<select>', 'Тег <select> позволяет создать элемент интерфейса в виде раскрывающегося списка.', [
             {titleOfAttr: 'multiple', actionOfAttr: 'Позволяет одновременно выбирать сразу несколько элементов списка.'},
             {titleOfAttr: 'autofocus', actionOfAttr: 'Устанавливает, что список получает фокус после загрузки страницы.'},
             {titleOfAttr: 'name', actionOfAttr: 'Имя элемента для отправки на сервер или обращения через скрипты.'},
