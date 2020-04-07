@@ -32,8 +32,8 @@
     // }
     // ==============================================
     {
-        function DescribeTag(tagName, action, attrs) {
-            this.tagName = tagName;
+        function DescribeTag(titleOfTag, action, attrs) {
+            this.titleOfTag = titleOfTag;
             this.action = action;
             this.attrs = attrs;
         }
@@ -124,8 +124,8 @@
     // ==============================================
     {
         class DescribeTag {
-            constructor(tagName, action, attrs) {
-                this.tagName = tagName;
+            constructor(titleOfTag, action, attrs) {
+                this.titleOfTag = titleOfTag;
                 this.action = action;
                 this.attrs = attrs;
             }
