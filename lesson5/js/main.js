@@ -200,7 +200,15 @@
             console.log(`їдемо зі швидкістю ${this.maxSpeed} на годину`);
         },
         info() {
-            console.log(this);
+            // console.log(this); //непрактично! исправление после разбора ДЗ
+            console.log(`{
+                model: ${this.momel},
+                manufacturer: ${this.manufacturer},
+                year: ${this.year},
+                maxSpeed: ${this.maxSpeed},
+                engineCapacity: ${this.engineCapacity},
+                driver: ${this.driver.name || 'autopilote'}
+            }`);
         },
         increaseMaxSpeed(newSpeed) {
             this.maxSpeed += newSpeed;
@@ -212,6 +220,8 @@
             this.driver = driver;
         }
     };
+
+    car.addDriver({name: 'Vasya', age: 32});
 
     // ==============================================
     //     - Створити функцію конструктор яка дозволяє створювати об'єкти car, з властивостями модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна. додати в об'єкт функції:
@@ -233,7 +243,15 @@
                 console.log(`їдемо зі швидкістю ${this.maxSpeed} на годину`);
             };
             this.info = function () {
-                console.log(this);
+                // console.log(this); //непрактично! исправление после разбора ДЗ
+                console.log(`{
+                model: ${this.momel},
+                manufacturer: ${this.manufacturer},
+                year: ${this.year},
+                maxSpeed: ${this.maxSpeed},
+                engineCapacity: ${this.engineCapacity},
+                driver: ${this.driver.name || 'autopilote'}
+            }`);
             };
             this.increaseMaxSpeed = function (newSpeed) {
                 this.maxSpeed += newSpeed;
@@ -270,7 +288,15 @@
             }
 
             info() {
-                console.log(this);
+                // console.log(this); //непрактично! исправление после разбора ДЗ
+                console.log(`{
+                model: ${this.momel},
+                manufacturer: ${this.manufacturer},
+                year: ${this.year},
+                maxSpeed: ${this.maxSpeed},
+                engineCapacity: ${this.engineCapacity},
+                driver: ${this.driver.name || 'autopilote'}
+            }`);
             }
 
             increaseMaxSpeed(newSpeed) {
