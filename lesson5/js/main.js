@@ -392,11 +392,15 @@
             this.findedFootSize = findedFootSize;
 
             this.findCinderella = function(cinderellsArr) {
-                for (const cinderell of cinderellsArr) {
-                    if (this.findedFootSize === cinderell.footSize) {
-                        console.log(`Prince ${this.name} found a shoe ${cinderell.name}.`)
+                for (const cinderella of cinderellsArr) {
+                    if (this.findedFootSize === cinderella.footSize) {
+                        console.log(`Prince ${this.name} found a shoe ${cinderella.name}.`)
                     }
                 }
+                //2#
+                //сделать проверки 
+                //let cinderella = cinderellsArr.find(cinderella => this.findedFootSize === cinderella.footSize);
+                //console.log(`Prince ${this.name} found a shoe ${cinderella}.`)
             }
         }
 
