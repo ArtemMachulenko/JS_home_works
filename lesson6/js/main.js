@@ -523,13 +523,26 @@
             console.log(-1);
         }
         else {
-            let keys = arr.map((n,i) => n === key? i: null).filter(n => n);
+            let keys = arr.map((n,i) => n === key? i: null).filter(n => n !== null);
             const minIndex = Math.min(...keys);
             const maxIndex = Math.max(...keys);
             console.log(`Answer: MinIndex = ${minIndex}, MaxIndex = ${maxIndex}.`);
         }
     }
 
+    getMinAndMaxIndex(0, arr); //-1
+    getMinAndMaxIndex(1, arr); //Answer: MinIndex = 0, MaxIndex = 0.
+    getMinAndMaxIndex(2, arr); //Answer: MinIndex = 1, MaxIndex = 1.
+    getMinAndMaxIndex(3, arr); //Answer: MinIndex = 2, MaxIndex = 2.
     getMinAndMaxIndex(4, arr); //Answer: MinIndex = 3, MaxIndex = 6.
-
+    getMinAndMaxIndex(5, arr); //-1
+    getMinAndMaxIndex(6, arr); //-1
+    getMinAndMaxIndex(7, arr); //Answer: MinIndex = 7, MaxIndex = 8.
+    getMinAndMaxIndex(9, arr); //Answer: MinIndex = 9, MaxIndex = 9.
+    getMinAndMaxIndex(10, arr); //-1
+    getMinAndMaxIndex(11, arr); //-1
+    getMinAndMaxIndex(12, arr); //-1
+    getMinAndMaxIndex(13, arr); //-1
+    getMinAndMaxIndex(14, arr); //Answer: MinIndex = 10, MaxIndex = 10.
+    getMinAndMaxIndex(15, arr); //-1
 }
