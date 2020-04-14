@@ -216,19 +216,125 @@
 
     //---------------------------------------------------------
     // -- взять массив пользователей
-    // let usersWithAddress = [
-    // {id:1,name: 'vasya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
-    // {id:2,name: 'petya', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 1}},
-    // {id:3,name: 'kolya', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 121}},
-    // {id:4,name: 'olya', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 90}},
-    // {id:5,name: 'max', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 115}},
-    // {id:6,name: 'anya', age: 31, status: false, address: {city: 'Kyiv', street: 'Shevchenko', number: 2}},
-    // {id:7,name: 'oleg', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 22}},
-    // {id:8,name: 'andrey', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 43}},
-    // {id:9,name: 'masha', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 12}},
-    // {id:10,name: 'olya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
-    // {id:11,name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
-    // ];
+    let usersWithAddress = [
+    {id:1,name: 'vasya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
+    {id:2,name: 'petya', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 1}},
+    {id:3,name: 'kolya', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 121}},
+    {id:4,name: 'olya', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 90}},
+    {id:5,name: 'max', age: 30, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 115}},
+    {id:6,name: 'anya', age: 31, status: false, address: {city: 'Kyiv', street: 'Shevchenko', number: 2}},
+    {id:7,name: 'oleg', age: 28, status: false, address: {city: 'Ternopil', street: 'Shevchenko', number: 22}},
+    {id:8,name: 'andrey', age: 29, status: true, address: {city: 'Lviv', street: 'Shevchenko', number: 43}},
+    {id:9,name: 'masha', age: 30, status: true, address: {city: 'Kyiv', street: 'Shevchenko', number: 12}},
+    {id:10,name: 'olya', age: 31, status: false, address: {city: 'Lviv', street: 'Shevchenko', number: 16}},
+    {id:11,name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
+    ];
+
+    const formSix = document.forms.formSix;
+    const usersContainer = document.getElementById('usersContainer');
+
+    const filters = {
+        filterStatus: (user) => {return !user.status},
+        filterAge: (user) => {return user.age >= 29},
+        filterCity: (user) => {return user.address.city === 'Kyiv'}
+    };
+
+    const currentFilters = [];
+    let usersWithAddressFilters = [];
+
+    formSix.addEventListener('change', e => {
+        const filterType = e.target.id;
+        if (!filterType) return;
+
+        if (e.target.checked) {
+            currentFilters.push(filterType);
+        }
+        else {
+            let index = currentFilters.indexOf(filterType);
+            if (index < 0) return;
+            currentFilters.splice(index, 1)
+        }
+    });
+
+    formSix.addEventListener('change', e => {
+        if (e.target.checked) {
+            usersWithAddressFilters = [...usersWithAddress];
+            for (const filter of currentFilters) {
+                usersWithAddressFilters = usersWithAddressFilters.filter(filters[filter]);
+            }
+            createUsers(usersWithAddressFilters, usersContainer);
+        }
+        else {
+            usersWithAddressFilters = [...usersWithAddress];
+            for (const filter of currentFilters) {
+                usersWithAddressFilters = usersWithAddressFilters.filter(filters[filter]);
+            }
+            createUsers(usersWithAddressFilters, usersContainer);
+        }
+    });
+
+    function createUsers(users, container) {
+        if (container.children.length) {
+            container.innerHTML = '';
+        }
+
+        for (const user of users) {
+            const div = document.createElement('div');
+            div.textContent = JSON.stringify(user);
+            container.append(div);
+        }
+    }
+
+    createUsers(usersWithAddress,usersContainer);
+
+
+
+
+        // if (e.target.checked) {
+        //     const filterType = e.target.id;
+        //     const filter = filters[filterType];
+        //     if (!filter) return;
+        //
+        //     if (!usersWithAddressFilters.length) {
+        //         usersWithAddressFilters = usersWithAddress.filter(filter);
+        //     }
+        //     else {
+        //         usersWithAddressFilters = usersWithAddressFilters.filter(filter);
+        //     }
+        //
+        //     createUsers(usersWithAddressFilters,usersContainer);
+        // }
+        // else {
+        //     createUsers(usersWithAddress, usersContainer);
+        // }
+
+
+
+    // let usersWithAddressFilters = [];
+    //
+    // formSix.addEventListener('change', e => {
+    //     if (e.target.checked) {
+    //         const filterType = e.target.id;
+    //         const filter = filters[filterType];
+    //         if (!filter) return;
+    //
+    //         if (!usersWithAddressFilters.length) {
+    //             usersWithAddressFilters = usersWithAddress.filter(filter);
+    //         }
+    //         else {
+    //             usersWithAddressFilters = usersWithAddressFilters.filter(filter);
+    //         }
+    //
+    //         createUsers(usersWithAddressFilters,usersContainer);
+    //     }
+    //     else {
+    //         createUsers(usersWithAddress, usersContainer);
+    //     }
+    // });
+    //
+    //
+
+
 
     // Создать три чекбокса. Каждый из них активирует фильтр для вышеуказаного массива. Фильтры могут работать как вместе так и по отдельности.
     // 1й - отфильтровывает пользователей со статусом false (осталяет со статусом false)
