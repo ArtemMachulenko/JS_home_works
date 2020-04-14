@@ -289,52 +289,7 @@
 
 
 
-
-        // if (e.target.checked) {
-        //     const filterType = e.target.id;
-        //     const filter = filters[filterType];
-        //     if (!filter) return;
-        //
-        //     if (!usersWithAddressFilters.length) {
-        //         usersWithAddressFilters = usersWithAddress.filter(filter);
-        //     }
-        //     else {
-        //         usersWithAddressFilters = usersWithAddressFilters.filter(filter);
-        //     }
-        //
-        //     createUsers(usersWithAddressFilters,usersContainer);
-        // }
-        // else {
-        //     createUsers(usersWithAddress, usersContainer);
-        // }
-
-
-
-    // let usersWithAddressFilters = [];
-    //
-    // formSix.addEventListener('change', e => {
-    //     if (e.target.checked) {
-    //         const filterType = e.target.id;
-    //         const filter = filters[filterType];
-    //         if (!filter) return;
-    //
-    //         if (!usersWithAddressFilters.length) {
-    //             usersWithAddressFilters = usersWithAddress.filter(filter);
-    //         }
-    //         else {
-    //             usersWithAddressFilters = usersWithAddressFilters.filter(filter);
-    //         }
-    //
-    //         createUsers(usersWithAddressFilters,usersContainer);
-    //     }
-    //     else {
-    //         createUsers(usersWithAddress, usersContainer);
-    //     }
-    // });
-    //
-    //
-
-
+    
 
     // Создать три чекбокса. Каждый из них активирует фильтр для вышеуказаного массива. Фильтры могут работать как вместе так и по отдельности.
     // 1й - отфильтровывает пользователей со статусом false (осталяет со статусом false)
