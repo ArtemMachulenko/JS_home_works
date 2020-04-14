@@ -3,8 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <title>Lesson 7</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 2000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        #menu {
+            display: flex;
+        }
+        #menu li a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: 1px solid;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #menu li ul {
+            height: 0%;
+            overflow: hidden;
+            transition: height .5s;
+        }
+
+        #menu li ul.open {
+            height: 100%;
+        }
+
+    /*----------------------------*/
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 100px;
+            height: 30px;
+            border: 1px solid;
+        }
+
+    /*    -----------------------------*/
+        #gallery .container {
+            width: 360px;
+            overflow: hidden;
+        }
+
+        #gallery img {
+            display: block;
+            width: 120px;
+            box-sizing: border-box;
+            border-right: 1px solid #fff;
+        }
+
+        #gallery .images-container {
+            display: flex;
+            margin-left: 0;
+            transition: margin-left 1s;
+        }
+
+        /*------------------------------*/
+        #select-text {
+            width: 700px;
+        }
+        #select-text span,
+        .color {
+            color: red;
+        }
+    </style>
 </head>
 <body>
+<p>
+    <div id="text">Some text...</div>
+    <button id="hideElemBtn">Hide text</button>
+</p>
 
+<!--------------------------------------->
+<p>
+    <button id="btnHideHirself">Hide me Х</button>
+</p>
+<!--------------------------------------->
+<p>
+    <input type="number" id="inputAge" placeholder="Age">
+    <button id="btnCheckAge">Check age</button>
+</p>
+<!--------------------------------------->
+<p>
+    <ul id="menu">
+        <li><a href="#">Item1</a>
+            <ul>
+                <li><a href="#">Item1.1</a></li>
+                <li><a href="#">Item1.2</a></li>
+                <li><a href="#">Item1.3</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Item2</a>
+            <ul>
+                <li><a href="#">Item2.1</a></li>
+                <li><a href="#">Item2.2</a></li>
+                <li><a href="#">Item2.3</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Item3</a>
+            <ul>
+                <li><a href="#">Item3.1</a></li>
+                <li><a href="#">Item3.2</a></li>
+                <li><a href="#">Item3.3</a>
+                </li>
+            </ul>
+            </a>
+        </li>
+    </ul>
+</p>
+<!------------------------------------------>
+<p>
+    <div id="containerComments"></div>
+</p>
+<!------------------------------------------>
+<p>
+    <form action="#" name="formOne">
+        <input type="text" name="firstName" value="Vasya" placeholder="First name">
+        <input type="text" name="lastName" value="Pupkin" placeholder="Last name">
+    </form>
+    <form action="#" name="formTwo">
+        <input type="text" name="firstName" value="Petya" placeholder="First name">
+        <input type="text" name="lastName" value="Sidorov" placeholder="Last name">
+    </form>
+    <button id="showFormsInfBtn">Show forms inform</button>
+</p>
+<!------------------------------------------->
+<p>
+    <form action="#" name="formThree">
+        <input type="number" name="rows" placeholder="Rows" value="3">
+        <input type="number" name="cells" placeholder="Cells" value="3">
+        <input type="text" name="cellContent" placeholder="Cell content" value="some content...">
+        <input type="button" name="createTableBtn" value="Create table">
+    </form>
+    <table id="table"></table>
+</p>
+<!------------------------------------------->
+<p>
+    <div id="gallery">
+        <div class="container">
+            <ul class="images-container">
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+                <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSyjXG2L6tyHdF8ooz9fQhkno9Kkfgz25lyHVqJdWzVjMbeIsGT&usqp=CAU" alt="cat"></li>
+            </ul>
+        </div>
+        <button class="arrow-prev">◄</button>
+        <button class="arrow-next">►</button>
+    </div>
+</p>
+<!---------------------------------------------------->
+<p>
+    <form action="#" name="formFour">
+        <input type="text" name="word" placeholder="Word" value="женщина_неразборчивая_в_половых_связях">
+        <button name="checkWordObscene">Check obscene word</button>
+    </form>
+</p>
+<!---------------------------------------------------->
+<p>
+    <form action="#" name="formFive">
+        <input type="text" name="wordInStr" placeholder="Text" value="Однажды женщина_неразборчивая_в_половых_связях пошла...">
+        <button name="checkWordObsceneInStr">Check obscene word </button>
+    </form>
+</p>
+<!---------------------------------------------------->
+
+<p id="select-text">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos voluptate, eius recusandae laborum corrupti, illum doloremque? Inventore doloribus magni blanditiis maiores eius officiis ullam ratione porro perspiciatis dolores maxime soluta quasi error eum ipsum vitae a repellendus unde in cumque distinctio nobis, quibusdam, possimus molestias. Quo placeat culpa praesentium repellat soluta eos rem perferendis cumque nulla possimus, porro non sint aspernatur, magni laudantium amet id vitae iusto earum ea quod laborum, optio repellendus? Reiciendis, nesciunt. Cupiditate vel temporibus ex accusamus, omnis illum numquam aperiam neque! In accusantium, maxime optio sapiente ipsam veritatis laboriosam est dignissimos voluptate repellendus consequatur, molestias eius.
+</p>
+<form action="#" name="formSeven">
+    <input type="radio" name="tag" id="strong" checked><label for="strong"><strong>text</strong></label>
+    <input type="radio" name="tag" id="i"><label for="i"><i>text</i></label>
+    <input type="radio" name="tag" id="u"><label for="u"><u>text</u></label>
+    <input type="radio" name="tag" id="s"><label for="s"><s>text</s></label>
+    <input type="radio" name="tag" id="span"><label for="span"><span class="color">text</span></label>
+</form>
+
+
+<script src="js/main.js"></script>
 </body>
 </html>
