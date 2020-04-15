@@ -14,6 +14,7 @@
         button,
         #elem1 {
             margin-top: 10px;
+            user-select: none;
         }
         .active {
             background-color: coral;
@@ -99,17 +100,17 @@
 
         //вызвать рекурсивную функцию для каждого элеиента
         for (elem of allElemBrothers) {
-            rec(elem);
+            rec(elem, elemsForPrint);
         }
 
-        function rec(elem) {
-            elemsForPrint.push(elem);
+        function rec(elem, array) {
+            array.push(elem);
             for (const child of elem.children) {
                 if (child.children.length) {
-                    rec(child);
+                    rec(child, array);
                 }
                 else {
-                    elemsForPrint.push(child);
+                    array.push(child);
                 }
             }
         }
@@ -156,10 +157,10 @@
         }
     }
 
-    const elem = document.getElementById('elem2');
+    // const elem = document.getElementById('elem2');
     // const elem = document.getElementById('elem6.3.1');
     // const elem = document.getElementById('elem6.3.2.3.1');
-    // const elem = document.getElementById('elem9');
+    const elem = document.getElementById('elem9');
 
     printAllElemBrothersAndChildren(elem);
 </script>
