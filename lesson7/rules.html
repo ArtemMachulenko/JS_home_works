@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fight Club</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        #content {
+            width: 350px;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+
+        .item {cursor: pointer; user-select: none}
+
+        ul {display: none;}
+
+        ul.open {display: block;}
+    </style>
+</head>
+<body>
+<div id="content"></div>
+<h1>Правила бойцовского клуба</h1>
+<div id="wrap">
+    <div class="rules rule1">
+        <h2>Первое правило Бойцовского клуба.</h2>
+        <p>Никому не рассказывать о Бойцовском клубе.</p>
+    </div>
+    <div class="rules rule2">
+        <h2>Второе правило Бойцовского клуба.</h2>
+        <p>Никогда никому не рассказывать о Бойцовском клубе.</p>
+    </div>
+    <div class="rules rule3">
+        <h2>Третье правило Бойцовского клуба.</h2>
+        <p>В схватке участвуют только двое.</p>
+    </div>
+    <div class="rules rule4">
+        <h2>Четвертое правило Бойцовского клуба.</h2>
+        <p>Не более одного поединка за один раз.</p>
+    </div>
+
+    <div class="rules rule5">
+        <h2>Пятое правило Бойцовского клуба.</h2>
+        <p>Бойцы сражаются без обуви и голые по пояс.</p>
+    </div>
+    <div class="rules rule6">
+        <h2>Шестое правило Бойцовского клуба.</h2>
+        <p>Поединок продолжается столько, сколько потребуется.</p>
+    </div>
+    <div class="rules rule7">
+        <h2>Седьмое правило Бойцовского клуба.</h2>
+        <p>Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок
+            окончен.</p>
+    </div>
+    <div class="rules rule8">
+        <h2>Восьмое и последнее правило Бойцовского клуба.</h2>
+        <p>Новичок обязан принять бой.</p>
+    </div>
+</div>
+
+<script>
+    // -- создать скрипт, который берет считывает на странице (rules.html) текст и делает сбоку меню-оглавление по всем заголовкам которые есть в тексте.
+    // При клике на пункт оглавления вы должны отправляться к этому пункту в тексте
+
+    const h2s = document.querySelectorAll('h2');
+    const content = document.getElementById('content');
+    
+    for (let i = 0; i < h2s.length; i++) {
+        const container = document.createElement('div');
+        container.classList.add('item');
+        container.textContent = h2s[i].textContent;
+        const ul = document.createElement('ul');
+
+        let ps = h2s[i].parentNode.querySelectorAll('p');
+
+        for (let j = 0; j < ps.length; j++) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `#elem${i}`;
+            a.textContent = ps[j].textContent;
+            ps[j].id = `elem${i}`;
+
+            li.append(a);
+            ul.append(li);
+            container.append(ul);
+
+            container.addEventListener('click', e => {
+                ul.classList.toggle('open');
+            });
+        }
+
+        content.append(container);
+    }
+
+
+</script>
+</body>
+</html>
