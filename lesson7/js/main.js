@@ -263,20 +263,11 @@
     });
 
     formSix.addEventListener('change', e => {
-        if (e.target.checked) {
-            usersWithAddressFilters = [...usersWithAddress];
-            for (const filter of currentFilters) {
-                usersWithAddressFilters = usersWithAddressFilters.filter(filters[filter]);
-            }
-            createUsers(usersWithAddressFilters, usersContainer);
+        usersWithAddressFilters = [...usersWithAddress];
+        for (const filter of currentFilters) {
+            usersWithAddressFilters = usersWithAddressFilters.filter(filters[filter]);
         }
-        else {
-            usersWithAddressFilters = [...usersWithAddress];
-            for (const filter of currentFilters) {
-                usersWithAddressFilters = usersWithAddressFilters.filter(filters[filter]);
-            }
-            createUsers(usersWithAddressFilters, usersContainer);
-        }
+        createUsers(usersWithAddressFilters, usersContainer);
     });
 
     function createUsers(users, container) {
