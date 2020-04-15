@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recursion task</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        div, button{
+            margin-left: 30px;
+        }
+        button,
+        #elem1 {
+            margin-top: 10px;
+        }
+        .active {
+            background-color: coral;
+            width: 300px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="elem1">elem 1</div>
+<div id="elem2">elem 2</div>
+<div id="elem3">elem 3</div>
+<div id="elem4">elem 4</div>
+<div id="elem5">elem 5</div>
+<div id="elem6">elem 6
+    <div id="elem6.1">elem 6.1</div>
+    <div id="elem6.2">elem 6.2</div>
+    <div id="elem6.3">elem 6.3
+        <div id="elem6.3.1">elem 6.3.1</div>
+        <div id="elem6.3.2">elem 6.3.2
+            <div id="elem6.3.2.1">elem 6.3.2.1</div>
+            <div id="elem6.3.2.2">elem 6.3.2.2</div>
+            <div id="elem6.3.2.3">elem 6.3.2.3
+                <div id="elem6.3.2.3.1">elem 6.3.2.3.1</div>
+                <div id="elem6.3.2.3.2">elem 6.3.2.3.2</div>
+                <div id="elem6.3.2.3.3">elem 6.3.2.3.3</div>
+            </div>
+        </div>
+        <div id="elem6.3.3">elem 6.3.3</div>
+    </div>
+    <div id="elem6.4">elem 6.4</div>
+</div>
+<div id="elem7">elem 7</div>
+<div id="elem8">elem 8
+    <div id="elem8.1">elem 8.1</div>
+    <div id="elem8.2">elem 8.2</div>
+    <div id="elem8.3">elem 8.3
+        <div id="elem8.3.1">elem 8.3.1
+            <div id="elem8.3.1.1">elem 8.3.1.1
+                <div id="elem8.3.1.1.1">elem 8.3.1.1.1
+                    <div id="elem8.3.1.1.1.1">elem 8.3.1.1.1.1
+                        <div id="elem8.3.1.1.1.1.1">elem 8.3.1.1.1.1.1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="elem9">elem 9</div>
+<div id="elem10">elem 10</div>
+
+<script>
+    // *****(Прям овердоз с рекурсией) Создать функцию которая принимает какой-либо элемент DOM-структуры .Функция создает в боди 2 кнопки (назад/вперед)
+    // при нажатии вперед, вы переходите к дочернему элементу, при еще одном нажатии на "вперед", вы переходите к следующему дочернему элементу (лежащему на одном уровне)
+    // НО если у (какого-либо)дочеренего элемента есть дети, то нажатие "вперед" позволяет нам войти внутрь элемента и  выводит первого ребенка. и тд.
+    // Когда все дети заканчиваются, мы выходим из данного дочернего элемента и переходим к следующему, лежащему с ним на одном уровне
+
+
+    function printAllElemBrothersAndChildren(elem) {
+        const buttonDown = document.createElement('button');
+        buttonDown.id = 'buttonDown';
+        buttonDown.textContent = '▼';
+
+        const buttonUp = document.createElement('button');
+        buttonUp.id = 'buttonUp';
+        buttonUp.textContent = '▲';
+
+        document.body.append(buttonDown,buttonUp);
+        //-------------------------------------------
+        const startElem = elem; // стартовый элемент
+        startElem.classList.add('active'); // подсветить его
+        printElem(startElem);
+
+        let allElemBrothers = [...startElem.parentNode.children]; //получить всех его родственников на одном уровне
+        //исключить кнопки и тег script (для примера)
+        allElemBrothers = allElemBrothers.filter(elem => {
+            return elem.tagName !== 'SCRIPT' &&
+                elem.id !== 'buttonDown' &&
+                elem.id !== 'buttonUp';
+        });
+
+        let elemsForPrint = []; //все родственники на одном уровне и их наследники
+
+        //вызвать рекурсивную функцию для каждого элеиента
+        for (elem of allElemBrothers) {
+            rec(elem);
+        }
+
+        function rec(elem) {
+            elemsForPrint.push(elem);
+            for (const child of elem.children) {
+                if (child.children.length) {
+                    rec(child);
+                }
+                else {
+                    elemsForPrint.push(child);
+                }
+            }
+        }
+        //--------------------------------
+        let indexElem = elemsForPrint.indexOf(startElem);
+        let counter = indexElem;
+
+        buttonDown.onclick = e => {
+            ++counter;
+            //если родственников ниже больше нет оставатся на последнем
+            if (!elemsForPrint[counter]) {
+                --counter;
+                return;
+            }
+
+            printElem(elemsForPrint[counter]);
+            removeActionStyle();
+            elemsForPrint[counter].classList.add('active');
+        }
+
+        buttonUp.onclick = e => {
+            --counter;
+            //если родственников выше больше нет оставатся на первом
+            if (!elemsForPrint[counter]) {
+                ++counter;
+                return;
+            }
+
+            printElem(elemsForPrint[counter]);
+            removeActionStyle();
+            elemsForPrint[counter].classList.add('active');
+        }
+
+        function removeActionStyle() {
+            const activeElems = document.querySelectorAll('.active');
+            if (!activeElems) return;
+            for (elem of activeElems) {
+                elem.classList.remove('active');
+            }
+        }
+
+        function printElem(elem) {
+            console.log(elem);
+        }
+    }
+
+    // const elem = document.getElementById('elem2');
+    // const elem = document.getElementById('elem6.3.1');
+    // const elem = document.getElementById('elem6.3.2.3.1');
+    const elem = document.getElementById('elem9');
+
+    printAllElemBrothersAndChildren(elem);
+</script>
+</body>
+</html>
