@@ -16,8 +16,8 @@ commentsOne.addEventListener('input', e => {
 // Пользователь вводит какие-то данные и закрывает страницу (не факт, что он заполнил всю форму).
 // Сделайте так, чтобы при следующем заходе на страницу введенные им ранее данные стояли на своих местах.
 // Сделайте ваш скрипт как можно более универсальным.
-// const formTwo = document.forms.formTwo;
-//
+const formTwo = document.forms.formTwo;
+
 formTwo.addEventListener('input', e => {
     let elem = e.target;
     if (elem.type === 'radio' || elem.type === 'checkbox' || elem.tagName === 'SELECT') return;
@@ -74,9 +74,9 @@ btnContainer.hidden = true;
 formThree.prepend(btnContainer);
 
 let index = 0; //текущий индекс для кнопок стрелок
-//если страница была перезагружена
-//если хранилище существует
-//установить в поле textarea последнее введенное значение
+// если страница была перезагружена
+// если хранилище существует
+// установить в поле textarea последнее введенное значение
 if (localStorage.getItem('storage')) {
     const storage = JSON.parse(localStorage.getItem('storage'));
     txtAreaCom.value = storage[storage.length-1].comment;
@@ -135,61 +135,12 @@ buttonRight.addEventListener('click', e => {
 // --Каждому контакту добавить кнопку для удаления контакта.
 // --Каждому контакту добавить кнопку редактироваиня. При нажати на нее появляется форма, в которой есть все необходимые инпуты для редактирования, которые уже заполнены данными объекта
 
+//        Pешение в файле notebook.html
 
-// ЕЩЕ НЕ ДОДЕЛАЛ!
 
 
-// const formFour = document.forms.formFour;
-// const btnCreateContact = formFour.btnCreateContact;
-// const contactsContainer = document.createElement('div');
-// document.body.append(contactsContainer);
-// let index = 0;
-//
-// btnCreateContact.addEventListener('click', e => {
-//     let contact = {};
-//     contact.id = index + 1;
-//     index++;
-//
-//
-//     for (const input of formFour.querySelectorAll('[name]')) {
-//         if (input.type === 'button') continue;
-//         contact[input.name] = input.value;
-//     }
-//
-//     if (!JSON.parse(localStorage.getItem('contacts'))) {
-//         let contacts = [];
-//         localStorage.setItem('contacts', JSON.stringify(contacts));
-//     }
-//
-//     let contacts = JSON.parse(localStorage.getItem('contacts'));
-//     contacts.push(contact);
-//     localStorage.setItem('contacts', JSON.stringify(contacts));
-//
-//     const div = document.createElement('div');
-//     const span = document.createElement('span');
-//     const btnRemove = document.createElement('button');
-//     const btnEdit = document.createElement('button');
-//
-//     span.textContent = JSON.stringify(contact);
-//     btnRemove.textContent = 'X';
-//     btnEdit.textContent = 'Edit';
-//
-//     btnRemove.addEventListener('click', e => {
-//         //получить контакт из хранилища
-//         let user = JSON.parse(btnRemove.parentNode.firstChild.textContent);
-//         //получить хранилище контактов
-//         let contacts = JSON.parse(localStorage.getItem('contacts'));
-//         //удалить контакт
-//         contacts = contacts.filter(contact => contact.id !== user.id);
-//         localStorage.setItem('contacts', JSON.stringify(contacts));
-//
-//         btnRemove.parentNode.remove();
-//     });
-//
-//     div.append(span,btnEdit,btnRemove);
-//     contactsContainer.append(div);
-//
-//
-// });
+
+
+
 
 

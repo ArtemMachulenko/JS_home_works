@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notebook</title>
+</head>
+<body>
+<form action="#" name="formFour">
+    <p>
+        <input type="text" name="name" placeholder="Name">
+    </p>
+    <p>
+        <input type="text" name="surname" placeholder="Surname">
+    </p>
+    <p>
+        <input type="text" name="patronymic" placeholder="Patronymic">
+    </p>
+    <p>
+        <input type="tel" name="phone" placeholder="Phone">
+    </p>
+    <p>
+        <input type="email" name="email" placeholder="Email">
+    </p>
+    <p>
+        <input type="text" name="firm" placeholder="Firm">
+    </p>
+    <p>
+        <input type="text" name="department" placeholder="Department">
+    </p>
+    <p>
+        <input type="text" name="birthday" placeholder="Birthday">
+    </p>
+    <p>
+        <input type="button" name="btnCreateContact" value="Create contact">
+    </p>
+</form>
+
+<script>
+    // - Реализуйте записную книгу, хранящую данные в локальном хранилище.
+    // Данные которые надо сохранять : ФИО, номер, почта, фирма, отдел, день рождения
+    // Данные вводить через соответсвующую форму.
+    // --Каждому контакту добавить кнопку для удаления контакта.
+    // --Каждому контакту добавить кнопку редактироваиня. При нажати на нее появляется форма, в которой есть все необходимые инпуты для редактирования, которые уже заполнены данными объекта
+
+    const formFour = document.forms.formFour;
+    const btnCreateContact = formFour.btnCreateContact;
+    const contactsContainer = document.createElement('div');
+    document.body.append(contactsContainer);
+
+    //если хранилище существует
+    if (JSON.parse(localStorage.getItem('contacts'))) {
+        let contacts = JSON.parse(localStorage.getItem('contacts'));
+
+        for (const contact of contacts) {
+            createContact(contact, contactsContainer);
+        }
+    }
+
+    btnCreateContact.addEventListener('click', e => {
+        let contact = {};
+
+        for (const input of formFour.querySelectorAll('[name]')) {
+            if (input.type === 'button') continue;
+            contact[input.name] = input.value;
+        }
+        //если хранилище не создано то создать
+        if (!JSON.parse(localStorage.getItem('contacts'))) {
+            let contacts = [];
+            localStorage.setItem('contacts', JSON.stringify(contacts));
+        }
+
+        //получить хранилище
+        let contacts = JSON.parse(localStorage.getItem('contacts'));
+        contacts.push(contact);
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+
+        createContact(contact, contactsContainer);
+    });
+
+    function createContact(contact, contactsContainer) {
+        const div = document.createElement('div');
+        const span = document.createElement('span');
+        const btnRemove = document.createElement('button');
+        const btnEdit = document.createElement('button');
+
+        span.textContent = JSON.stringify(contact);
+        btnRemove.textContent = 'Delete';
+        btnEdit.textContent = 'Edit';
+
+        div.append(span, btnEdit, btnRemove);
+        contactsContainer.append(div);
+
+        btnRemove.addEventListener('click', e => {
+            //удалить из хранилища контактов
+            let contacts = JSON.parse(localStorage.getItem('contacts'));
+            let index = contacts.findIndex(user => JSON.stringify(user) === JSON.stringify(contact));
+            contacts.splice(index, 1);
+            localStorage.setItem('contacts', JSON.stringify(contacts));
+            //удалить со страницы
+            btnRemove.parentNode.remove();
+        });
+
+        btnEdit.addEventListener('click', e => {
+            //если форма уже создана то не создавать
+            if (btnEdit.parentNode.lastChild.tagName === 'FORM') {
+                btnEdit.parentNode.lastChild.hidden = false;
+                return;
+            }
+            //создать форму
+            let formClone = formFour.cloneNode(true);
+            let cloneBtnChange = formClone.btnCreateContact;
+            cloneBtnChange.name = 'btnChangeContact';
+            cloneBtnChange.value = 'Change';
+
+            let btnClose = document.createElement('input');
+            btnClose.type = 'button';
+            btnClose.name = 'hide';
+            btnClose.value = 'Hide';
+            //вставить сохраненные значения
+            for (const input of formClone.querySelectorAll('[name]')) {
+                if (input.type === 'button') continue;
+                input.value = contact[input.name];
+            }
+
+            formClone.lastElementChild.append(btnClose)
+            btnEdit.parentNode.append(formClone);
+
+            btnClose.addEventListener('click', e => {
+                formClone.hidden = true;
+            });
+
+            cloneBtnChange.addEventListener('click', e => {
+                let changeContact = {};
+
+                for (const input of formClone.querySelectorAll('[name]')) {
+                    if (input.type === 'button') continue;
+                    changeContact[input.name] = input.value;
+                }
+                //замена в хранилище
+                //найти текущий contact в хранилище и заменить его на changeContact
+                let contacts = JSON.parse(localStorage.getItem('contacts'));
+                let index = contacts.findIndex(user => JSON.stringify(user) === JSON.stringify(contact));
+                contacts.splice(index, 1, changeContact);
+                localStorage.setItem('contacts', JSON.stringify(contacts));
+                //замена
+                span.textContent = JSON.stringify(changeContact);
+            });
+        });
+    }
+
+</script>
+</body>
+</html>
