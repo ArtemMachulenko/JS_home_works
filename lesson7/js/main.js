@@ -238,39 +238,39 @@
 
     const formSix = document.forms.formSix;
     const usersContainer = document.getElementById('usersContainer');
-
-    const filters = {
-        filterStatus: (user) => {return !user.status},
-        filterAge: (user) => {return user.age >= 29},
-        filterCity: (user) => {return user.address.city === 'Kyiv'}
-    };
-
     const currentFilters = [];
     let usersWithAddressFilters = [];
 
+    const filters = {
+        filterStatus: user => !user.status,
+        filterAge: user => user.age >= 29,
+        filterCity: user => user.address.city === 'Kyiv',
+    };
+    
     formSix.addEventListener('change', e => {
         const filterType = e.target.id;
         if (!filterType) return;
 
         if (e.target.checked) {
-            currentFilters.push(filterType);
+            currentFilters.push(filterType); //добавить в массив фильтров
         }
         else {
             let index = currentFilters.indexOf(filterType);
             if (index < 0) return;
-            currentFilters.splice(index, 1)
+            currentFilters.splice(index, 1); //удалить из массива фильтров
         }
     });
 
     formSix.addEventListener('change', e => {
         usersWithAddressFilters = [...usersWithAddress];
         for (const filter of currentFilters) {
-            usersWithAddressFilters = usersWithAddressFilters.filter(filters[filter]);
+            usersWithAddressFilters = usersWithAddressFilters.filter(filters[filter]); //применить каждый фильтр
         }
         createUsers(usersWithAddressFilters, usersContainer);
     });
 
     function createUsers(users, container) {
+        //очистить предыдущий
         if (container.children.length) {
             container.innerHTML = '';
         }
