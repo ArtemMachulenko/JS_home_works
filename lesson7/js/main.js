@@ -236,39 +236,71 @@
     {id:11,name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
     ];
 
+    // const formSix = document.forms.formSix;
+    // const usersContainer = document.getElementById('usersContainer');
+    // const currentFilters = [];
+    // let usersWithAddressFilters = [];
+    //
+    // const filters = {
+    //     filterStatus: user => !user.status,
+    //     filterAge: user => user.age >= 29,
+    //     filterCity: user => user.address.city === 'Kyiv',
+    // };
+    //
+    // formSix.addEventListener('change', e => {
+    //     const filterType = e.target.id;
+    //     if (!filterType) return;
+    //
+    //     if (e.target.checked) {
+    //         currentFilters.push(filterType); //добавить в массив фильтров
+    //     }
+    //     else {
+    //         let index = currentFilters.indexOf(filterType);
+    //         if (index < 0) return;
+    //         currentFilters.splice(index, 1); //удалить из массива фильтров
+    //     }
+    // });
+    //
+    // formSix.addEventListener('change', e => {
+    //     usersWithAddressFilters = [...usersWithAddress];
+    //     for (const filter of currentFilters) {
+    //         usersWithAddressFilters = usersWithAddressFilters.filter(filters[filter]); //применить каждый фильтр
+    //     }
+    //     createUsers(usersWithAddressFilters, usersContainer);
+    // });
+    //
+    // function createUsers(users, container) {
+    //     //очистить предыдущий
+    //     if (container.children.length) {
+    //         container.innerHTML = '';
+    //     }
+    //
+    //     for (const user of users) {
+    //         const div = document.createElement('div');
+    //         div.textContent = JSON.stringify(user);
+    //         container.append(div);
+    //     }
+    // }
+    //
+    // createUsers(usersWithAddress,usersContainer);
+
+    //==============================================
+    //решение 2
     const formSix = document.forms.formSix;
     const usersContainer = document.getElementById('usersContainer');
-    const currentFilters = [];
-    let usersWithAddressFilters = [];
-
-    const filters = {
-        filterStatus: user => !user.status,
-        filterAge: user => user.age >= 29,
-        filterCity: user => user.address.city === 'Kyiv',
-    };
-    
-    formSix.addEventListener('change', e => {
-        const filterType = e.target.id;
-        if (!filterType) return;
-
-        if (e.target.checked) {
-            currentFilters.push(filterType); //добавить в массив фильтров
-        }
-        else {
-            let index = currentFilters.indexOf(filterType);
-            if (index < 0) return;
-            currentFilters.splice(index, 1); //удалить из массива фильтров
-        }
-    });
+    const filterStatus = document.getElementById('filterStatus');
+    const filterAge = document.getElementById('filterAge');
+    const filterCity = document.getElementById('filterCity');
 
     formSix.addEventListener('change', e => {
-        usersWithAddressFilters = [...usersWithAddress];
-        for (const filter of currentFilters) {
-            usersWithAddressFilters = usersWithAddressFilters.filter(filters[filter]); //применить каждый фильтр
-        }
+        let usersWithAddressFilters = [...usersWithAddress];
+        if (filterStatus.checked) usersWithAddressFilters = usersWithAddressFilters.filter(user => !user.status);
+        if (filterAge.checked) usersWithAddressFilters = usersWithAddressFilters.filter(user => user.age >= 29);
+        if (filterCity.checked) usersWithAddressFilters = usersWithAddressFilters.filter(user => user.address.city === 'Kyiv');
+
         createUsers(usersWithAddressFilters, usersContainer);
     });
-
+    
     function createUsers(users, container) {
         //очистить предыдущий
         if (container.children.length) {
@@ -282,7 +314,7 @@
         }
     }
 
-    createUsers(usersWithAddress,usersContainer);
+    createUsers(usersWithAddress, usersContainer);
 
 
     //----------------------------------------------------------
