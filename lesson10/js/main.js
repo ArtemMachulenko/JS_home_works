@@ -215,7 +215,14 @@
         getCardByKey(key) {
             if (key > 3 && key <= 0) return;
 
-            return this.cards.find(card => card.getCardOptions().key === key);
+            //возвращать объект карты
+            const card = this.cards.find(card => card.getCardOptions().key === key);
+            const cardOptions = card.getCardOptions();
+            Object.setPrototypeOf(cardOptions, card);
+            return cardOptions;
+
+            //#2
+            //return this.cards.find(card => card.getCardOptions().key === key);
         }
     }
 
@@ -228,6 +235,9 @@
     //получить карту по ключу
     const userCard1 = user.getCardByKey(1);
     const userCard2 = user.getCardByKey(2);
+
+    console.log(userCard1); //{balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 1}
+    console.log(userCard2); //{balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 2}
 
     //положить деньги на карту 1
     userCard1.putCredits(500);
