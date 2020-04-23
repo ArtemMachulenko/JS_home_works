@@ -236,8 +236,8 @@
     const userCard1 = user.getCardByKey(1);
     const userCard2 = user.getCardByKey(2);
 
-    console.log(userCard1); //{balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 1}
-    console.log(userCard2); //{balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 2}
+    //console.log(userCard1); //{balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 1}
+    //console.log(userCard2); //{balance: 100, transactionLimit: 100, historyLogs: Array(0), key: 2}
 
     //положить деньги на карту 1
     userCard1.putCredits(500);
