@@ -181,9 +181,9 @@
     //{operationType: "Put credit", credits: 1000, operationTime: "4/23/2020, 20:58:28"},
     //{operationType: "Transaction limit change", credits: 5000, operationTime: "4/23/2020, 20:58:28"},
     //{operationType: "Take credit", credits: 100, operationTime: "4/23/2020, 20:58:28"},
-    //{operationType: "Take credit", credits: 150, operationTime: "4/23/2020, 20:58:28"}
-    //{operationType: "Take credit", credits: 50, operationTime: "4/23/2020, 20:58:28"}
-    //{operationType: "Take credit", credits: 250, operationTime: "4/23/2020, 20:58:28"}
+    //{operationType: "Take credit", credits: 150, operationTime: "4/23/2020, 20:58:28"},
+    //{operationType: "Take credit", credits: 50, operationTime: "4/23/2020, 20:58:28"},
+    //{operationType: "Take credit", credits: 250, operationTime: "4/23/2020, 20:58:28"},
     // ]
 
 
