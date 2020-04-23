@@ -63,10 +63,29 @@
 
         function putCredits(money) {
             cardOptions.balance += money;
+
+            //log
+            const log = {
+                operationType: 'Put credit',
+                credits: money,
+                operationTime: `${new Date().toLocaleDateString('en-US')}, ${new Date().toLocaleTimeString()}`
+            };
+
+            cardOptions.historyLogs.push(log);
+
         }
 
         function setTransactionLimit(limit) {
             cardOptions.transactionLimit = limit;
+
+            //log
+            const log = {
+                operationType: 'Transaction limit change',
+                credits: limit,
+                operationTime: `${new Date().toLocaleDateString('en-US')}, ${new Date().toLocaleTimeString()}`
+            };
+
+            cardOptions.historyLogs.push(log);
         }
 
         function takeCredits(money) {
@@ -80,6 +99,15 @@
             }
 
             cardOptions.balance -= money;
+
+            //log
+            const log = {
+                operationType: 'Take credit',
+                credits: money,
+                operationTime: `${new Date().toLocaleDateString('en-US')}, ${new Date().toLocaleTimeString()}`
+            };
+
+            cardOptions.historyLogs.push(log);
         }
 
         function transferCredits(money, receiverUser) {
@@ -98,15 +126,6 @@
             const moneyAfterTax = money - (money/100 * TRANSFER_TAX);
 
             receiverUser.putCredits(moneyAfterTax); //пополнить карту 2
-
-            //log
-            const log = {
-                operationType: 'Reseived credits',
-                credits: money,
-                operationTime: `${new Date().toLocaleDateString('en-US')}, ${new Date().toLocaleTimeString()}`
-            };
-
-            cardOptions.historyLogs.push(log);
         }
 
         return {
@@ -156,12 +175,17 @@
     //баланс карты 2 после пересыла
     //console.log(card2.getCardOptions()); //{balance: 547.75, transactionLimit: 100, historyLogs: Array(0), key: 2}
 
-    //посмотреть историю переводов
-    // console.log(card1.getCardOptions().historyLogs);
-    //[{operationType: "Reseived credits", credits: 150, operationTime: "4/23/2020, 11:17:01"},
-    // {operationType: "Reseived credits", credits: 50, operationTime: "4/23/2020, 11:17:01"},
-    // {operationType: "Reseived credits", credits: 250, operationTime: "4/23/2020, 11:17:01"}
+    //посмотреть историю
+    console.log(card1.getCardOptions().historyLogs);
+    //[
+    //{operationType: "Put credit", credits: 1000, operationTime: "4/23/2020, 20:58:28"},
+    //{operationType: "Transaction limit change", credits: 5000, operationTime: "4/23/2020, 20:58:28"},
+    //{operationType: "Take credit", credits: 100, operationTime: "4/23/2020, 20:58:28"},
+    //{operationType: "Take credit", credits: 150, operationTime: "4/23/2020, 20:58:28"}
+    //{operationType: "Take credit", credits: 50, operationTime: "4/23/2020, 20:58:28"}
+    //{operationType: "Take credit", credits: 250, operationTime: "4/23/2020, 20:58:28"}
     // ]
+
 
     //====================================================================================================
     // 2) Створити UserAccount:
