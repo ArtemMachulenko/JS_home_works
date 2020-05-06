@@ -545,4 +545,43 @@
     getMinAndMaxIndex(13, arr); //-1
     getMinAndMaxIndex(14, arr); //Answer: MinIndex = 10, MaxIndex = 10.
     getMinAndMaxIndex(15, arr); //-1
+	
+	
+	
+	
+	
+	create database if not exists Students;
+use Students;
+
+create table student
+(
+    id int primary key not null auto_increment,
+    name varchar(255) default 'john',
+    age int,
+    gender varchar(255)
+);
+
+insert into student (name, age, gender)
+values
+('Oleg', 20, 'male'),
+('Dima', 25, 'male'),
+('Roman', 18, 'male'),
+('Olga', 15, 'female'),
+('Ira', 29, 'female'),
+('Anton', 31, 'male'),
+('Ivan', 38, 'male'),
+('Veniamin', 56, 'male'),
+('Mary', 37, 'female'),
+('Kardebalita', 50, 'female'),
+('Huanitos', 10, 'female');
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
